@@ -8,8 +8,6 @@ namespace OnlineBookStoreAPI.Controllers
 {
 	public class HomeController : BaseApiController
 	{
-		
-
 		[HttpGet("Quotes")]
 		public async Task<ActionResult<IEnumerable<QuotesData>>> GetQuotes() 
 		{
@@ -29,7 +27,6 @@ namespace OnlineBookStoreAPI.Controllers
 		public async Task<List<Quote>> CallExternalApiQuotes() 
 		{
 			List<Quote> quotesData = new List<Quote>();
-
 			
 			using (var httpClient = new HttpClient())
 			{

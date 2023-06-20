@@ -12,37 +12,35 @@ namespace OnlineBookStoreAPI.Controllers
 		{
 			try
 			{
-				var textResult = await CallExternalApiText();	
+				var textsResult = await CallExternalApiTexts();	
 				
-				return Ok(textResult);
+				return Ok(textsResult);
 			}
-			catch (Exception e) 
+			catch (Exception ex) 
 			{
 				throw;
 			}
 		}
 
 		#region Helper Methods
-		public async Task<List<LatinText>> CallExternalApiText()
+		public async Task<List<LatinText>> CallExternalApiTexts()
 		{
 			List<LatinText> textsData = new List<LatinText>();
 
 			using (var httpClient = new HttpClient())
 			{
-				using (var response = await httpClient.GetAsync("https://jsonplaceholder.typicode.com/posts")) 
+				using (var response = await httpClient.GetAsync("https://jsonplaceholder.typicode.com/posts"))
 				{
 					string apiResponse = await response.Content.ReadAsStringAsync();
+					
 					if (!string.IsNullOrEmpty(apiResponse))
 					{
 						textsData = JsonConvert.DeserializeObject<List<LatinText>>(apiResponse);
 					}
-					
 				}
 			}
-
 			return textsData;
 		}
-
 		#endregion
 	}
 }
