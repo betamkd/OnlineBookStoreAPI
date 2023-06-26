@@ -35,7 +35,7 @@ namespace OnlineBookStoreAPI.Controllers
 					string apiResponse = await response.Content.ReadAsStringAsync();
 					
 					if (!string.IsNullOrEmpty(apiResponse)) 
-					{ 
+					{
 						quotesData = JsonConvert.DeserializeObject<List<Quote>>(apiResponse);
 					}
 				}
