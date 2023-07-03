@@ -1,5 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using OnlineBookstore.Data;
+using OnlineBookstore.Services;
+using OnlineBookstore.Service.Interfaces;
+using OnlineBookstore.Repository.Interfaces;
+using OnlineBookstore.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +14,25 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration; // access and setup the config
 IWebHostEnvironment environment = builder.Environment; // access and setup the environment
 
-// Add services to the container.
+// Add/register services to the container.
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
+builder.Services.AddScoped<IPublisherService, PublisherService>();
+builder.Services.AddScoped<IShopCartService, ShopCartService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+// Add/register repositories to the container.
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IPhotoRepository, PhotoRepository>();
+builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
+builder.Services.AddScoped<IShopCartRepository, ShopCartRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

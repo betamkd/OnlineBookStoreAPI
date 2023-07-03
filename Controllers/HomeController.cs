@@ -1,11 +1,9 @@
-﻿
-
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using OnlineBookStoreAPI.Models;
-
-namespace OnlineBookStoreAPI.Controllers
+﻿namespace OnlineBookStoreAPI.Controllers
 {
+	using Microsoft.AspNetCore.Mvc;
+	using Newtonsoft.Json;
+	using OnlineBookStoreAPI.Models;
+
 	public class HomeController : BaseApiController
 	{
 		[HttpGet("Quotes")]
@@ -23,7 +21,8 @@ namespace OnlineBookStoreAPI.Controllers
 			}
 		}
 		#region Helper Methods
-
+		
+		[NonAction]
 		public async Task<List<Quote>> CallExternalApiQuotes() 
 		{
 			List<Quote> quotesData = new List<Quote>();

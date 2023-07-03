@@ -22,6 +22,7 @@ namespace OnlineBookStoreAPI.Controllers
 		}
 
 		#region Helper Methods
+		[NonAction]
 		public async Task<List<LatinText>> CallExternalApiTexts()
 		{
 			List<LatinText> textsData = new List<LatinText>();
